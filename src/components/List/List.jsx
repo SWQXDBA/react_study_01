@@ -6,7 +6,7 @@ class List extends Component {
             <ul className='list'>
                 <li>
                     <input type="checkbox"/>
-                    <span>...............   </span>
+                    <span>...............   ...</span>
                     <button>删除</button>
                 </li>
             </ul>
