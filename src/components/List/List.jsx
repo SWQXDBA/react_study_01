@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
-
+import Item from "../Item";
 class List extends Component {
+
     render() {
+        const {todos} = this.props
         return (
             <ul className='list'>
-                <li>
-                    <input type="checkbox"/>
-                    <span>...............   ...</span>
-                    <button>删除</button>
-                </li>
+                {
+                    todos.map((todo,index)=>{return <Item {...todo}/>})
+                }
             </ul>
         );
     }
