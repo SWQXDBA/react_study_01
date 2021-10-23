@@ -11,6 +11,7 @@ change = ()=>{
     const {finish} = this.state
     this.setState({finish:!finish})
 }
+//注意 这里不要通过构造器把props赋值给state 会有问题 应该直接调用props
     render() {
 
         return (
