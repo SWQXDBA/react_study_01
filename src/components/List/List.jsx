@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Item from "../Item";
+
 class List extends Component {
 
     render() {
@@ -7,7 +8,10 @@ class List extends Component {
         return (
             <ul className='list'>
                 {
-                    todos.map((todo,index)=>{return <Item {...todo}/>})
+                    todos.map((todo, index) => {
+                            return <Item key = {todo.id} deleteItem={this.props.deleteItem}  {...todo}/>
+                        }
+                    )
                 }
             </ul>
         );

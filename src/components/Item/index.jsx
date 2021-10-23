@@ -1,33 +1,37 @@
 import React, {Component} from 'react';
+import './index.css'
 
 class Item extends Component {
-
 state = {
-    finish:false
+    finish:false,
+    mouseIsEnter:false
 }
-constructor(props) {
-    super(props)
-    this.state.finish = props.finish
-}
+
 change = ()=>{
     const {finish} = this.state
     this.setState({finish:!finish})
 }
     render() {
+
         return (
-            <li onMouseOver={this.showDelete}>
+            //通过切换classname来调整css
+            <li className={this.state.mouseIsEnter?'choose':'unchoose'} onMouseEnter={()=>this.mouse(true)} onMouseLeave={()=>this.mouse(false)} >
                 <label >
                     <input type="checkbox" checked={this.state.finish} onChange={this.change}/>
                     <span>{this.props.text}</span>
                 </label>
-                <button ref={'delete'} style={{display:'none'}}>删除</button>
-
+                {/*通过直接调整css*/}
+                <button onClick={this.delete} className='delete' style={{display:this.state.mouseIsEnter?'inline':'none'}}>删除</button>
             </li>
         );
     }
-    showDelete = ()=>{
-
+    mouse = (enter)=>{
+        this.setState({mouseIsEnter:enter})
     }
+    delete =()=>{
+        this.props.deleteItem(this.props.id)
+    }
+
 }
 
 export default Item;
